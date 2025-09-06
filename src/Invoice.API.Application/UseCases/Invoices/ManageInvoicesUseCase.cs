@@ -12,10 +12,12 @@ public class ManageInvoicesUseCase : IManageInvoicesUseCase
         _invoiceRepository = invoiceRepository;
     }
 
-    public async Task<List<InvoiceEntitie>> Handle(int top)
+    public async Task<ManageInvoiceResponse<InvoiceEntitie>> Handle(int top)
     {
         var invoice = await _invoiceRepository.getInvoices(top);
 
-        return invoice;
+        var manageInvoiceResponse = new ManageInvoiceResponse<InvoiceEntitie>(invoice);
+
+        return manageInvoiceResponse;
     }
 }

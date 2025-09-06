@@ -8,19 +8,20 @@ namespace Invoice.API.Api.Controllers
     [Route("api/v1")]
     public class InvoiceController : ControllerBase
     {
-        private readonly IManageInvoicesUseCase _manageInvoicesUseCase;
+        private readonly IManageInvoicesUseCase manageInvoicesUseCase;
         public InvoiceController(
             IManageInvoicesUseCase manageInvoicesUseCase
         )
         {
-            _manageInvoicesUseCase = manageInvoicesUseCase;
+            this.manageInvoicesUseCase = manageInvoicesUseCase;
         }
 
         [HttpGet("invoices")]
-        public async Task<IActionResult> getInvoices([FromQuery] int top = 10)
+        public async Task<IActionResult> getInvoices([FromQuery] int limit = 10)
         {
-            var invoices = await _manageInvoicesUseCase.Handle(top);
-            return Ok(new { invoices });
+            var invoices = await this.manageInvoicesUseCase.Handle(limit);
+
+            return Ok(ResponseDto<ManageInvoiceResponse<InvoiceEntitie>>.Ok(invoices));
         }
     }
 }
