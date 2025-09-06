@@ -10,7 +10,7 @@
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
-    <ProjectReference Include="..\Invoice.API.Domain\Invoice.API.Domain.csproj" />
+    <ProjectReference Include="..\Simplest.Backend.API.Domain\Simplest.Backend.API.Domain.csproj" />
   </ItemGroup>
 
 </Project>

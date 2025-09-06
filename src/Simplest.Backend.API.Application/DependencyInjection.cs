@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Invoice.API.Application
+namespace Simplest.Backend.API.Application
 {
     public static class DependencyInjection
     {

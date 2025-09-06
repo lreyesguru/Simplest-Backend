@@ -1,6 +1,6 @@
-﻿using Invoice.API.Domain;
+﻿using Simplest.Backend.API.Domain;
 
-namespace Invoice.API.Application;
+namespace Simplest.Backend.API.Application;
 
 public class ManageInvoiceResponse<T>
 {

@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{20E6DC2F-9891-4745-BBEE-9995BB809217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice.API.Api", "src\Invoice.API.Api\Invoice.API.Api.csproj", "{36D285C2-16C0-4776-9CB4-3A2151118FA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplest.Backend.API.Api", "src\Simplest.Backend.API.Api\Simplest.Backend.API.Api.csproj", "{36D285C2-16C0-4776-9CB4-3A2151118FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice.API.Domain", "src\Invoice.API.Domain\Invoice.API.Domain.csproj", "{ACD530AD-CECC-4A3C-A392-9024BC3854E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplest.Backend.API.Domain", "src\Simplest.Backend.API.Domain\Simplest.Backend.API.Domain.csproj", "{ACD530AD-CECC-4A3C-A392-9024BC3854E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice.API.Application", "src\Invoice.API.Application\Invoice.API.Application.csproj", "{DFF2A576-AD83-4796-9238-F23F04D2384B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplest.Backend.API.Application", "src\Simplest.Backend.API.Application\Simplest.Backend.API.Application.csproj", "{DFF2A576-AD83-4796-9238-F23F04D2384B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice.API.Infrastructure", "src\Invoice.API.Infrastructure\Invoice.API.Infrastructure.csproj", "{02123C27-9252-4EA7-9018-FCD67417480F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplest.Backend.API.Infrastructure", "src\Simplest.Backend.API.Infrastructure\Simplest.Backend.API.Infrastructure.csproj", "{02123C27-9252-4EA7-9018-FCD67417480F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

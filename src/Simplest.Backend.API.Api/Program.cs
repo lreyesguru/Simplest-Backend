@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
-using Invoice.API.Application;
-using Invoice.API.Infrastructure;
+using Simplest.Backend.API.Application;
+using Simplest.Backend.API.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;

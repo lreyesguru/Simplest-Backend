@@ -1,4 +1,4 @@
-﻿namespace Invoice.API.Domain;
+﻿namespace Simplest.Backend.API.Domain;
 
 public interface IInvoiceRepository<T>
 {

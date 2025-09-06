@@ -1,8 +1,8 @@
-using Invoice.API.Domain;
+using Simplest.Backend.API.Domain;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Invoice.API.Infrastructure
+namespace Simplest.Backend.API.Infrastructure
 {
     public static class DependencyInjection
     {

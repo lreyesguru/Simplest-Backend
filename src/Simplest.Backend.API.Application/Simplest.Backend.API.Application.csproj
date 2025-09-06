@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Invoice.API.Domain\Invoice.API.Domain.csproj" />
+    <ProjectReference Include="..\Simplest.Backend.API.Domain\Simplest.Backend.API.Domain.csproj" />
   </ItemGroup>
 
 </Project>

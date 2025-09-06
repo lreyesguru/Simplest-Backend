@@ -1,8 +1,8 @@
-﻿using Invoice.API.Domain;
+﻿using Simplest.Backend.API.Domain;
 using Dapper;
 using Microsoft.Data.SqlClient;
 // using Microsoft.
-namespace Invoice.API.Infrastructure;
+namespace Simplest.Backend.API.Infrastructure;
 
 public class InvoiceRepository : IInvoiceRepository<InvoiceEntitie>
 {

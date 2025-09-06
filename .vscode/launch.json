@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: Invoice.API.Api [http]",
+            "name": "C#: Simplest.Backend.API.Api [http]",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/src/Invoice.API.Api/Invoice.API.Api.csproj",
+            "projectPath": "${workspaceFolder}/src/Simplest.Backend.API.Api/Simplest.Backend.API.Api.csproj",
             "launchConfigurationId": "TargetFramework=;http"
         }
     ]

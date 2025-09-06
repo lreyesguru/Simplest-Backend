@@ -1,8 +1,8 @@
-using Invoice.API.Application;
-using Invoice.API.Domain;
+using Simplest.Backend.API.Application;
+using Simplest.Backend.API.Domain;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Invoice.API.Api.Controllers
+namespace Simplest.Backend.API.Controllers
 {
     [ApiController]
     [Route("api/v1")]

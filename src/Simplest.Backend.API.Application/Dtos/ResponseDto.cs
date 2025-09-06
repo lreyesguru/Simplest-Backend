@@ -1,4 +1,4 @@
-﻿namespace Invoice.API.Application;
+﻿namespace Simplest.Backend.API.Application;
 
 public class ResponseDto<T>
 {
