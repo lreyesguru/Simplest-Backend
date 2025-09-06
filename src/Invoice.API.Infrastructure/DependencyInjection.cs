@@ -9,7 +9,7 @@ namespace Invoice.API.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, string connectionString)
         {
             services.AddScoped(conn => new SqlConnection(connectionString));
-            services.AddScoped<IInvoiceRepository<string>, InvoiceRepository>();
+            services.AddScoped<IInvoiceRepository<InvoiceEntitie>, InvoiceRepository>();
             return services;
         }
     }
