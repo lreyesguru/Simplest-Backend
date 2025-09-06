@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Simplest.Backend.API;
 using Simplest.Backend.API.Application;
 using Simplest.Backend.API.Infrastructure;
 
@@ -14,6 +15,34 @@ builder.Services.AddInfrastructureServices(config["ConnectionStrings:Default"] ?
 
 builder.Services.AddSwaggerGen(options =>
 {
+    options.AddSecurityDefinition("simplest_token", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Description = "API Key necesario en el header 'simplest'. Ejemplo: simplest: TU_API_KEY_AQUI",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        Name = "simplest_token",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Scheme = "ApiKeyScheme"
+    });
+
+    // Aplica el esquema a todos los endpoints
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "simplest_token"
+                },
+                Scheme = "ApiKeyScheme",
+                Name = "simplest_token",
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            },
+            new List<string>()
+        }
+    });
+
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = config["Documentation:Title"],
@@ -28,7 +57,6 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -43,5 +71,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+
 // app.UseHttpsRedirection();
+
+app.UseMiddleware<SimplestAuthorizationMiddleware>();
+
 app.Run();
