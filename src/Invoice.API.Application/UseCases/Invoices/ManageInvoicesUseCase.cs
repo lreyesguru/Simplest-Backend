@@ -2,18 +2,20 @@
 
 namespace Invoice.API.Application;
 
-public class ManageInvoicesUseCase : IManageInvoicesUseCase<string>
+public class ManageInvoicesUseCase : IManageInvoicesUseCase
 {
-    private readonly IInvoiceRepository<string> _invoiceRepository;
+    private readonly IInvoiceRepository<InvoiceEntitie> _invoiceRepository;
     public ManageInvoicesUseCase(
-        IInvoiceRepository<string> invoiceRepository
+        IInvoiceRepository<InvoiceEntitie> invoiceRepository
     )
     {
         _invoiceRepository = invoiceRepository;
     }
 
-    public Task<string> Handle()
+    public async Task<List<InvoiceEntitie>> Handle(int top)
     {
-        return Task.FromResult("Hola Mundo");
+        var invoice = await _invoiceRepository.getInvoices(top);
+
+        return invoice;
     }
 }

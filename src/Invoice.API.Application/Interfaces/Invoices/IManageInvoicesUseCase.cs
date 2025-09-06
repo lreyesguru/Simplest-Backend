@@ -1,6 +1,8 @@
+using Invoice.API.Domain;
+
 namespace Invoice.API.Application;
 
-public interface IManageInvoicesUseCase<T>
+public interface IManageInvoicesUseCase
 {
-    public Task<T> Handle();
+    public Task<List<InvoiceEntitie>> Handle(int top);
 }

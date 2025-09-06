@@ -6,7 +6,7 @@ namespace Invoice.API.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IManageInvoicesUseCase<string>, ManageInvoicesUseCase>();
+            services.AddScoped<IManageInvoicesUseCase, ManageInvoicesUseCase>();
             return services;
         }
     }

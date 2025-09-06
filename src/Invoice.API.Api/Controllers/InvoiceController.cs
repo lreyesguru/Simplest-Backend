@@ -1,4 +1,5 @@
 using Invoice.API.Application;
+using Invoice.API.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invoice.API.Api.Controllers
@@ -7,18 +8,18 @@ namespace Invoice.API.Api.Controllers
     [Route("api/v1")]
     public class InvoiceController : ControllerBase
     {
-        private readonly IManageInvoicesUseCase<string> _manageInvoicesUseCase;
+        private readonly IManageInvoicesUseCase _manageInvoicesUseCase;
         public InvoiceController(
-            IManageInvoicesUseCase<string> manageInvoicesUseCase
+            IManageInvoicesUseCase manageInvoicesUseCase
         )
         {
             _manageInvoicesUseCase = manageInvoicesUseCase;
         }
 
         [HttpGet("invoices")]
-        public async Task<IActionResult> getInvoices()
+        public async Task<IActionResult> getInvoices([FromQuery] int top = 10)
         {
-            var invoices = await _manageInvoicesUseCase.Handle();
+            var invoices = await _manageInvoicesUseCase.Handle(top);
             return Ok(new { invoices });
         }
     }
