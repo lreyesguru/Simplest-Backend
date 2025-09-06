@@ -1,4 +1,7 @@
-﻿namespace Simplest.Backend.API;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Simplest.Backend.API.Application;
+
+namespace Simplest.Backend.API;
 
 public class SimplestAuthorizationMiddleware
 {
@@ -8,22 +11,28 @@ public class SimplestAuthorizationMiddleware
     public SimplestAuthorizationMiddleware(RequestDelegate next, ILogger<SimplestAuthorizationMiddleware> logger)
     {
         this.next = next;
-        this.logger = logger;   
+        this.logger = logger;
     }
 
     public async Task Invoke(HttpContext context)
     {
         var token = context.Request.Headers["simplest_token"].FirstOrDefault()?.Split(" ").Last();
 
-        if (token == "token")
-        {
-            await this.next(context);
-        }
+        var tokenHandle = new JwtSecurityTokenHandler();
 
-        else
+        var tokenDecoded = tokenHandle.ReadJwtToken(token).Payload;
+
+        if (!tokenDecoded.ContainsKey("c"))
         {
             context.Response.StatusCode = 401;
-            await context.Response.WriteAsync("Token inválido");
+
+            var response = ResponseDto<string>.Fail("Invalid token");
+
+            await context.Response.WriteAsJsonAsync<ResponseDto<string>>(response);
         }
+
+        var company = tokenDecoded["c"];
+
+        await this.next(context);
     }
 }
