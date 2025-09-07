@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: Simplest.Backend.API.Api [http]",
+            "name": "C#: Simplest Backend Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/src/Simplest.Backend.API.Api/Simplest.Backend.API.Api.csproj",
-            "launchConfigurationId": "TargetFramework=;http"
+            "projectPath": "${workspaceFolder}/src/Simplest.Backend.API/Simplest.Backend.API.csproj"
         }
+
     ]
 }

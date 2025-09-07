@@ -16,22 +16,26 @@ public class SimplestAuthorizationMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        var token = context.Request.Headers["simplest_token"].FirstOrDefault()?.Split(" ").Last();
+        // var token = context.Request.Headers["simplest_token"].FirstOrDefault()?.Split(" ").Last();
 
-        var tokenHandle = new JwtSecurityTokenHandler();
+        // var tokenHandle = new JwtSecurityTokenHandler();
 
-        var tokenDecoded = tokenHandle.ReadJwtToken(token).Payload;
+        // var tokenDecoded = tokenHandle.ReadJwtToken(token).Payload;
 
-        if (!tokenDecoded.ContainsKey("c"))
-        {
-            context.Response.StatusCode = 401;
+        // if (!tokenDecoded.ContainsKey("c"))
+        // {
+        //     context.Response.StatusCode = 401;
 
-            var response = ResponseDto<string>.Fail("Invalid token");
+        //     var response = ResponseDto<string>.Fail("Invalid token");
 
-            await context.Response.WriteAsJsonAsync<ResponseDto<string>>(response);
-        }
+        //     await context.Response.WriteAsJsonAsync<ResponseDto<string>>(response);
+        // }
 
-        var company = tokenDecoded["c"];
+        // var companyId = tokenDecoded["c"];
+
+        var companyId = 7;
+
+        context.Items["companyId"] = companyId;
 
         await this.next(context);
     }

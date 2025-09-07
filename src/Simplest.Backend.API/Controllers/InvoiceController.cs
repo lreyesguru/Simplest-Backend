@@ -1,27 +1,28 @@
 using Simplest.Backend.API.Application;
-using Simplest.Backend.API.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Simplest.Backend.API.Controllers
 {
     [ApiController]
     [Route("api/v1")]
-    public class InvoiceController : ControllerBase
+    public class InvoiceController: ControllerBase
     {
-        private readonly IManageInvoicesUseCase manageInvoicesUseCase;
+        private readonly IInvoiceService<InvoicesResponseDto> invoiceService;
         public InvoiceController(
-            IManageInvoicesUseCase manageInvoicesUseCase
+            IInvoiceService<InvoicesResponseDto> invoiceService
         )
         {
-            this.manageInvoicesUseCase = manageInvoicesUseCase;
+            this.invoiceService = invoiceService;
         }
 
         [HttpGet("invoices")]
-        public async Task<IActionResult> getInvoices([FromQuery] int limit = 10)
+        public async Task<IActionResult> getInvoices([FromQuery] InvoiceProcessType type, [FromQuery] int pages = 1, [FromQuery] int rows = 15)
         {
-            var invoices = await this.manageInvoicesUseCase.Handle(limit);
+            var companyId = (int)HttpContext.Items["companyId"];
 
-            return Ok(ResponseDto<ManageInvoiceResponse<InvoiceEntitie>>.Ok(invoices));
+            var invoices = await this.invoiceService.getInvoices(type, pages, rows, companyId);
+
+            return Ok(ResponseDto<string>.Ok("invoices"));
         }
     }
 }

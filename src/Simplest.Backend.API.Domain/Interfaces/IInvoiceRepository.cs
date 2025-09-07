@@ -2,5 +2,5 @@
 
 public interface IInvoiceRepository<T>
 {
-    public Task<List<InvoiceEntitie>> getInvoices(int top);
+    public Task<List<T>> getInvoices(InvoiceProcessType type, int rows, int pages, int companyId);
 }

@@ -6,7 +6,7 @@ namespace Simplest.Backend.API.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IManageInvoicesUseCase, ManageInvoicesUseCase>();
+            services.AddScoped<IInvoiceService<InvoicesResponseDto>, InvoiceService>();
             return services;
         }
     }

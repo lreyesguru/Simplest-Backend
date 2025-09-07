@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Simplest.Backend.API;
 using Simplest.Backend.API.Application;
@@ -9,8 +10,14 @@ var config = builder.Configuration;
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddControllers();
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
 builder.Services.AddApplicationServices();
+
 builder.Services.AddInfrastructureServices(config["ConnectionStrings:Default"] ?? "");
 
 builder.Services.AddSwaggerGen(options =>
