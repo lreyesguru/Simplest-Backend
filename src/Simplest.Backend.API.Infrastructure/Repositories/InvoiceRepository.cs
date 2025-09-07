@@ -31,7 +31,7 @@ public class InvoiceRepository : IInvoiceRepository<InvoiceEntitie>
             rowsVal = rows
         });
 
-        var commandGetEnableInvoiceData = $@"
+        var commandGetEnableInvoiceData = @"
             WITH cte_error AS
             (
             SELECT i.*, (
@@ -61,7 +61,15 @@ public class InvoiceRepository : IInvoiceRepository<InvoiceEntitie>
             FETCH NEXT @rowsVal ROWS ONLY
         ";
 
-        var resultGetEnableInvoices = await _conn.QueryAsync<int>(commandGetEnableInvoiceData);
+        var resultGetEnableInvoices = await _conn.QueryAsync<List<int>>(commandGetEnableInvoiceData, new
+        {
+            type = _type,
+            company = companyId,
+            rowsVal = rows,
+            pageVal = pages
+        });
+
+        resultGetEnableInvoices = resultGetEnableInvoices.ToList();
 
         var commandGetInvoices = $@"
                 WITH invoice_counts AS (
